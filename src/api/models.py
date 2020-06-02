@@ -20,4 +20,6 @@ class User(db.Model):
         db.session.add(new_user)
         db.session.commit()
 
-        print(user)
+        del user['password']
+
+        return user

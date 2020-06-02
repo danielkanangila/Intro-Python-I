@@ -18,19 +18,13 @@ def index():
 @app.route("/register", methods=["POST"])
 def register():
     try:
-        u = User()
-        u.create(request.json)
-        return jsonify({"message": "ok"}), 200
+        new_u = User().create(request.json)
+
+        return jsonify(new_u), 200
     except:
         print(sys.exc_info())
         return jsonify({"message": "An unexpected error occurred"}), 500
 
 
-def main():
-    # Create tables based on table definition in `models`
-    db.create_all()
-
-
 if __name__ == "__main__":
-    with app.app_context():
-        main()
+    app.run()
