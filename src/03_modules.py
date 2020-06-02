@@ -13,21 +13,21 @@ import getpass
 # Print out the command line arguments in sys.argv, one per line:
 # YOUR CODE HERE
 for arg in sys.argv:
-    print(f"{arg} \n")
+    print(f"{arg}")
 
 # Print out the OS platform you're using:
 # YOUR CODE HERE
-print(f"{os.name} \n")
+print(f"{os.name}")
 
 # Print out the version of Python you're using:
 # YOUR CODE HERE
-print(f"{sys.version} \n")
+print(f"{sys.version}")
 
 # See the docs for the OS module: https://docs.python.org/3.7/library/os.html
 
 # Print the current process ID
 # YOUR CODE HERE
-print(f"{os.getpid()} \n")
+print(f"{os.getpid()}")
 
 # Print the current working directory (cwd):
 # YOUR CODE HERE
