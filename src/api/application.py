@@ -31,6 +31,19 @@ def index():
 @app.route("/register", methods=["POST"])
 def register():
     try:
+        credentials = request.json
+        if not credentials:
+            return jsonify({"message": "JSON body not found"}), 400
+
+        if (not credentials['username']) | (not credentials['email']) | (not credentials['password']):
+            return jsonify({"message": "'email', 'username' and 'password' are required"}), 400
+
+        # Check if the email or username already exists in the database
+        u = User.query.filter((User.email == credentials['email']) | (
+            User.username == credentials['username'])).first()
+        if u:
+            return jsonify({"message": "'email' or 'username' already in use."}), 400
+
         new_u = User().create(request.json)
 
         return jsonify(new_u), 201
